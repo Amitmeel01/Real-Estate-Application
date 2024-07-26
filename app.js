@@ -62,7 +62,7 @@ app.use(cookieParser());
 app.use('/api/auth', require('./routes/auth.route'));
 app.use('/api/posts', require('./routes/post.route'));
 app.use('/api/test', require('./routes/test.route'));
-app.use('/api/user', require('../Api/routes/user.route'));
+app.use('/api/user', require('./routes/user.route'));
 app.use('/api/chat', require('./routes/chat.route'));
 app.use('/api/message', require('./routes/message.route'));
 

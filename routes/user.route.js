@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const verifyToken = require('../middleware/verifyToken');
-const prisma = require('../models/prisma');
-const bcrypt = require('bcrypt');
+const router = require("express").Router();
+const verifyToken = require("../middleware/verifyToken");
+const prisma = require("../models/prisma");
+const bcrypt = require("bcrypt");
 
 // Get all users
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.status(200).json(users);
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 // });
 
 // Update user
-router.put('/:id', verifyToken, async (req, res) => {
+router.put("/:id", verifyToken, async (req, res) => {
   const { id } = req.params;
   const tokenUserId = req.userId; // from verifyToken middleware
   const { password, avatar, ...inputs } = req.body;
@@ -44,7 +44,7 @@ router.put('/:id', verifyToken, async (req, res) => {
   try {
     let updatedPassword = null;
 
-    if (password && typeof password === 'string') {
+    if (password && typeof password === "string") {
       updatedPassword = await bcrypt.hash(password, 10);
     }
 
@@ -53,8 +53,8 @@ router.put('/:id', verifyToken, async (req, res) => {
       data: {
         ...inputs,
         ...(updatedPassword && { password: updatedPassword }),
-        ...(avatar && { avatar })
-      }
+        ...(avatar && { avatar }),
+      },
     });
 
     const { password: userPassword, ...rest } = updatedUser;
@@ -67,7 +67,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 });
 
 // Delete user
-router.delete('/:id', verifyToken, async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   const { id } = req.params;
   const tokenUserId = req.userId; // from verifyToken middleware
 
@@ -77,7 +77,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
 
   try {
     await prisma.user.delete({
-      where: { id }
+      where: { id },
     });
     res.status(200).json({ message: "User deleted successfully" });
   } catch (err) {
@@ -86,10 +86,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
   }
 });
 
-
-
 // saved
-
 
 router.post("/save", verifyToken, async (req, res) => {
   const postId = req.body.postId;
@@ -127,14 +124,15 @@ router.post("/save", verifyToken, async (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ message: "Failed to save or remove the post" });
+    return res
+      .status(500)
+      .json({ message: "Failed to save or remove the post" });
   }
 });
 
-
 // profile posts
 
-router.get('/profilePosts',verifyToken,async (req,res)=>{
+router.get("/profilePosts", verifyToken, async (req, res) => {
   const tokenUserId = req.userId;
   try {
     const userPosts = await prisma.post.findMany({
@@ -153,32 +151,30 @@ router.get('/profilePosts',verifyToken,async (req,res)=>{
     console.log(err);
     res.status(500).json({ message: "Failed to get profile posts!" });
   }
-})
+});
 
 //notification
 
-router.get('/notification',verifyToken,async (req,res)=>{
-
+router.get("/notification", verifyToken, async (req, res) => {
   const tokenUserId = req.userId;
   try {
-   const number=await prisma.chat.count({
-    where:{
-      userIds:{
-        hasSome:[tokenUserId],
+    const number = await prisma.chat.count({
+      where: {
+        userIds: {
+          hasSome: [tokenUserId],
+        },
+        NOT: {
+          seenBy: {
+            hasSome: [tokenUserId],
+          },
+        },
       },
-      NOT:{
-        seenBy:{
-          hasSome:[tokenUserId]
-        }
-      }
-    }
-   }) 
+    });
     res.status(200).json(number);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to get profile posts!" });
   }
-})
-
+});
 
 module.exports = router;
