@@ -1,0 +1,156 @@
+.homepage {
+  // margin-top: 3rem;
+  display: flex;
+  height: 100vh;
+  justify-content: space-between;
+
+  .textContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10rem;
+
+    .wrapper {
+      padding-right: 100px;
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      height: 100vh;
+      flex: 3;
+
+      .title {
+        font-size: 2.3rem;
+      }
+      .boxes {
+        display: flex;
+        justify-content: space-between;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+    }
+
+    .imgcontainer {
+      flex: 3;
+      // background: #fcf5f3;
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      padding: 2rem 0 1rem 2rem;
+
+      img {
+        width: 55%;
+        position: absolute;
+        right: 0;
+
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+}
+
+@media (max-width: 1290px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.1rem !important;
+    font-weight: 300;
+  }
+  .imgcontainer {
+    flex: 3;
+
+    padding: 1rem 0 0.5rem 1rem;
+
+    img {
+      width: 50% !important;
+      position: relative;
+      right: -4rem !important;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2.3rem !important;
+  }
+  h2 {
+    font-size: 1.3rem !important;
+    font-weight: 300;
+  }
+  .imgcontainer {
+    img {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .title {
+    font-size: 1.5rem !important;
+  }
+  .boxes {
+    margin-top: 10rem;
+    .box {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.5rem;
+
+      h2 {
+        font-size: 1rem !important;
+      }
+      h1 {
+        font-size: 2rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .homepage {
+    position: relative;
+    left: -30px;
+    width: 30% !important;
+    box-sizing: border-box;
+    margin-top: 0rem;
+  }
+  .title {
+    font-size: 1.5rem !important;
+  }
+  .wrapper p {
+    font-size: 0.8rem;
+  }
+
+  .boxes {
+    margin-top: 10rem;
+    margin-left: 0;
+    .box {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.5rem;
+
+      h2 {
+        font-size: 0.8rem !important;
+      }
+      h1 {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+}

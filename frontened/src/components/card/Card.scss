@@ -1,0 +1,126 @@
+.card {
+  display: flex;
+  flex-direction: row; // Default to row layout for larger screens
+  gap: 30px;
+  width: 100%; // Ensure cards take full width
+  align-items: flex-start;
+
+  .imageContainer {
+    flex: 2;
+    height: 300px; // Set a fixed height for the image container
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .textContainer {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #444;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: #000;
+        transform: scale(1.01);
+      }
+    }
+
+    .address {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #888;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 300;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background: rgba(254, 205, 81, 0.438);
+      width: max-content;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .features {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 1rem;
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          background: whitesmoke;
+          padding: 5px;
+          border-radius: 0.5rem;
+        }
+      }
+
+      .icons {
+        display: flex;
+        flex-wrap: wrap; // Allow wrapping for icons
+        gap: 20px;
+
+        .icon {
+          background: transparent;
+          padding: 5px;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          flex: 1 1 45%; // Flex basis to fit two icons per row
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column; // Change to column layout for smaller screens
+    gap: 10px; // Reduce gap for smaller screens
+
+    .imageContainer {
+      width: 100%; // Ensure image takes full width
+      height: 200px; // Adjust height to fit the content
+    }
+
+    .textContainer {
+      .bottom {
+        flex-direction: column; // Align features and icons vertically
+        gap: 10px !important;
+      }
+
+      .features, .icons {
+        display: flex;
+        flex-direction: row; // Arrange features and icons in a row
+        flex-wrap: wrap; // Wrap items to fit the available space
+        gap: 10px !important;
+      }
+
+      .icons {
+        .icon {
+          flex: 1 1 45%; // Flex basis to fit two icons per row
+          background: transparent !important; // Remove background color for small screens
+          padding: 0;
+        }
+      }
+    }
+  }
+}

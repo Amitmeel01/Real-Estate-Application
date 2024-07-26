@@ -1,0 +1,247 @@
+@import '../../responsive.scss';
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background: #fff; // Add background to ensure text is readable
+  padding: 10px 20px;
+
+  a {
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.menuIcon {
+  display: none;
+}
+
+nav .left img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.left {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 0.7rem;
+  height: 100%;
+}
+
+.left :link {
+  font-size: 1.3rem;
+}
+
+.left span {
+  font-size: 1.3rem;
+}
+
+.imgLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 0.7rem;
+}
+
+.right {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  height: 100%;
+  align-items: center;
+  z-index: 1002;
+}
+
+.right :link {
+  padding: 10px 18px;
+  margin: 10px;
+}
+
+.register {
+  background: #fece51;
+}
+
+.menu :link {
+  display: none;
+}
+
+.menuIcon img {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+@media (max-width: 950px) {
+  nav .left img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .left {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .left :link {
+    font-size: 1.2rem;
+  }
+
+  .right :link {
+    padding: 5px 10px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 750px) {
+  nav .left img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .left {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .left :link {
+    font-size: 0.9rem;
+  }
+
+  .right :link {
+    padding: 5px 10px;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  nav {
+    width: 100%;
+
+    :link {
+      display: none;
+    }
+    span {
+      display: block !important;
+    }
+  }
+  nav .left img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+  }
+  .right {
+    background: #fff;
+  }
+
+  .menuIcon {
+    display: block;
+    z-index: 999;
+    // position: absolute !important;
+    // right: 10px !important;
+  }
+
+  .menuIcon img {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    object-fit: contain;
+  }
+
+  .menu {
+    position: absolute;
+    background: black;
+    color: white;
+    height: 100vh;
+    width: 50%;
+    top: 0;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 1s ease-in-out;
+    z-index: 998;
+    overflow: scroll;
+
+    &.active {
+      right: 0;
+    }
+
+    :link {
+      display: flex;
+      position: relative;
+      top: 6rem;
+      left: 2rem;
+      font-size: 1.3rem;
+      height: 100vh;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.user {
+  background: #fecd5167;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .profile {
+    background: #fece51;
+    cursor: pointer;
+    position: relative;
+
+    span { // Ensuring the profile span is not hidden
+      display: inline;
+    }
+  }
+
+  .notification {
+    position: absolute;
+    top: -2px;
+    right: -6px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 650px) {
+ 
+  .name {
+    display: none !important;
+  }
+
+  .user {
+    background: transparent;
+  }
+  .user .img{
+    
+    margin-right: 0rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+}
+
+

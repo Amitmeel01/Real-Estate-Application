@@ -1,0 +1,91 @@
+.filter{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    h1{
+font-weight: 300;
+font-size: 24px;
+    }
+
+    .item{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    input,select{
+        width: 100px;
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        font-size: 14px;
+        margin: 0.5rem 0 0.5rem 0;
+    }
+
+    .top{
+        input{
+width: 50%;
+        }
+    }
+
+    .bottom{
+        display: flex;
+        
+        gap: 15px;
+        padding: 1rem 0 1rem 0;
+    }
+
+    button{
+        width: 70px;
+        padding: 5px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        background: #fece51;
+        position: relative;
+        top: 45px;
+        right: 0px;
+        border-radius: 5px;
+       
+
+    }
+}
+
+
+
+@media (max-width: 1300px) {
+    .bottom {
+      flex-direction: row; // Change to row layout for larger screens
+      flex-wrap: wrap;
+  
+      .item {
+        flex: 1 1 calc(50% - 15px); // Two columns layout for larger screens
+      }
+  
+      button {
+        position: relative;
+        top: 0px;
+        // right: 300px;
+        left: 0px;
+        align-self: flex-end; // Align button to the end in the row layout
+      }
+    }
+  }
+
+@media (max-width: 769px) {
+    .bottom {
+      flex-direction: row; // Change to row layout for larger screens
+      flex-wrap: wrap;
+  
+      .item {
+        flex: 1 1 calc(50% - 15px); // Two columns layout for larger screens
+      }
+  
+      button {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        align-self: flex-end; // Align button to the end in the row layout
+      }
+    }
+  }

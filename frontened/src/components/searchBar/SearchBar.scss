@@ -1,0 +1,132 @@
+.searchbar {
+  .type {
+    button {
+      padding: 16px 36px;
+      border: 1px solid #999;
+      cursor: pointer;
+      background: white;
+      border-bottom: none;
+
+      &.active {
+        background: black;
+        color: white;
+      }
+
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-right: none;
+      }
+    }
+  }
+
+  form {
+    border: 1px solid #999;
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    //  gap: 4px;
+
+    input {
+      padding: 0px 10px;
+      border: none;
+      width: 200px;
+    }
+
+    button {
+      width: 60px;
+      height: 62px;
+      // border-radius: 50%;
+      background: #fece51;
+      z-index: 999;
+      cursor: pointer;
+      border: none;
+    }
+  }
+}
+
+@media (max-width: 1290px) {
+  input {
+    padding: 0px 10px;
+    border: none;
+    width: 150px !important;
+  }
+
+  button {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 900px) {
+  input {
+    padding: 0px 10px;
+    border: none;
+    width: 200px !important;
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 750px) {
+  .type {
+    display: flex;
+    flex-direction: column;
+    button {
+      padding: 20px 40px;
+      border: 1px solid black !important;
+      padding-right: 4rem !important;
+
+      &.active {
+        background: black;
+        color: white;
+      }
+
+      &:first-child {
+        border-top-left-radius: 0px !important;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    border: none !important;
+    input {
+      padding: 20px 30px 20px 30px !important;
+      border: 1px solid black !important;
+      width: 25rem !important;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      width: 25rem !important;
+      // height: 10rem !important;
+      padding: 1rem 0;
+      z-index: -1 !important;
+    
+    }
+  }
+}
+
+@media (max-width:400px){
+  form {
+    
+    input {
+      padding: 20px 30px 20px 30px !important;
+      border: 1px solid black !important;
+      width: 20rem !important;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      width: 20rem !important;
+      // height: 10rem !important;
+      padding: 1rem 0;
+      z-index: -1 !important;
+    
+    }
+  }
+}
