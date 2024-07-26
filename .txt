@@ -1,0 +1,1 @@
+when deploy project change client url to deploy url and localhost:8080 backend url to {window.location.origin}
