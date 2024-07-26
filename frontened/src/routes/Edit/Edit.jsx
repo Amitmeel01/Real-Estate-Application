@@ -22,7 +22,7 @@ function Edit() {
       const formData = new FormData(e.target);
       const inputs = Object.fromEntries(formData);
 
-      const res = await axios.put(`http://localhost:8080/api/posts/${post.id}`, {
+      const res = await axios.put(`${window.location.origin}/api/posts/${post.id}`, {
         postData: {
           title: inputs.title,
           price: parseInt(inputs.price),

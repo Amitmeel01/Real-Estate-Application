@@ -18,7 +18,7 @@ function Chat() {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/api/chat', { withCredentials: true });
+        const res = await axios.get(`${window.location.origin}/api/chat`, { withCredentials: true });
         setChats(res.data);
       } catch (err) {
         console.log(err);
@@ -27,7 +27,7 @@ function Chat() {
 
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:8080/api/chat/users', { withCredentials: true });
+        const res = await axios.get(`${window.location.origin}/api/chat/users`, { withCredentials: true });
         setUsers(res.data);
       } catch (err) {
         console.log(err);
@@ -44,7 +44,7 @@ function Chat() {
 
   const handleOpenChat = async (id, receiver) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/chat/${id}`, { withCredentials: true });
+      const res = await axios.get(`${window.location.origin}/api/chat/${id}`, { withCredentials: true });
       if (!res.data.seenBy.includes(currentUser.id)) {
         decrease();
       }
@@ -57,7 +57,7 @@ function Chat() {
 
   const handleStartChat = async (user) => {
     try {
-      const res = await axios.post(`http://localhost:8080/api/chat`, { receiverId: user.id }, { withCredentials: true });
+      const res = await axios.post(`${window.location.origin}/api/chat`, { receiverId: user.id }, { withCredentials: true });
       setChat({ ...res.data, receiver: user });
     } catch (err) {
       console.log(err);
@@ -72,7 +72,7 @@ function Chat() {
     if (!text) return;
 
     try {
-      const res = await axios.post(`http://localhost:8080/api/message/${chat.id}`, { text }, { withCredentials: true });
+      const res = await axios.post(`${window.location.origin}/api/message/${chat.id}`, { text }, { withCredentials: true });
       setChat(prev => ({ ...prev, messages: [...prev.messages, res.data] }));
       e.target.reset();
       socket.emit("sendMessage", {
@@ -87,7 +87,7 @@ function Chat() {
   useEffect(() => {
     const read = async () => {
       try {
-        await axios.put(`http://localhost:8080/api/chat/read/${chat.id}`);
+        await axios.put(`${window.location.origin}/api/chat/read/${chat.id}`);
       } catch (err) {
         console.log(err);
       }

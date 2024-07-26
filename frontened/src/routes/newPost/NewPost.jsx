@@ -21,7 +21,7 @@ const handlesubmit=async (e)=>{
   const inputs=Object.fromEntries(formData)
 
   try{
-    const res= await axios.post("http://localhost:8080/api/posts",
+    const res= await axios.post(`${window.location.origin}/api/posts`,
       {
         postData:{
           title:inputs.title, 

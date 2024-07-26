@@ -10,7 +10,7 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:4000");
+    const newSocket = io(`${window.location.origin}`);
     setSocket(newSocket);
 
     // Clean up socket connection on unmount

@@ -22,7 +22,7 @@ const formData=new FormData(e.target);
 const {username,email,password}=Object.fromEntries(formData)
 
 try{
-  const res= await axios.put(`http://localhost:8080/api/user/${currentUser.id}`,
+  const res= await axios.put(`${window.location.origin}/api/user/${currentUser.id}`,
     { username,
       password,
       email,

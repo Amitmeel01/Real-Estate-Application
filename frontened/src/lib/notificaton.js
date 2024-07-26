@@ -7,7 +7,7 @@ import axios from "axios";
 export const useNotificationStore=create((set)=>({
     number:0,
     fetch:async ()=>{
-        const res = await axios(`http://localhost:8080/api/user/notification`, {
+        const res = await axios(`${window.location.origin}/api/user/notification`, {
             withCredentials: true  //this is imprtant
           }); 
 

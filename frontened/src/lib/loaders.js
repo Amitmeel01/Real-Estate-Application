@@ -4,7 +4,7 @@ import { defer } from "react-router-dom";
 export const singlePageLoader = async ({ params }) => {
   try {
     console.log(params.id);
-    const res = await axios(`http://localhost:8080/api/posts/${params.id}`, {
+    const res = await axios(`${window.location.origin}/api/posts/${params.id}`, {
       withCredentials: true, //this is imprtant
     });
     return res.data;
@@ -17,7 +17,7 @@ export const EditPageLoader = async ({ params }) => {
   try {
     console.log(params.id);
     const { id } = params;
-    const res = await axios(`http://localhost:8080/api/posts/${id}`, {
+    const res = await axios(`${window.location.origin}/api/posts/${id}`, {
       withCredentials: true, //this is imprtant
     });
     return res.data;
@@ -33,7 +33,7 @@ export const listPageLoader = async ({ request, params }) => {
   try {
     
     const postPromise = await axios(
-      `http://localhost:8080/api/posts?${query}`,
+      `${window.location.origin}/api/posts?${query}`,
       {
         withCredentials: true, //this is imprtant
       }
@@ -49,13 +49,13 @@ export const listPageLoader = async ({ request, params }) => {
 
 export const profilePageLoader = async () => {
   const postPromise = await axios(
-    `http://localhost:8080/api/user/profilePosts`,
+    `${window.location.origin}/api/user/profilePosts`,
     {
       withCredentials: true, //this is imprtant
     }
   );
 
-  const chatPromise = await axios(`http://localhost:8080/api/chat`, {
+  const chatPromise = await axios(`${window.location.origin}/api/chat`, {
     withCredentials: true, //this is imprtant
   });
 

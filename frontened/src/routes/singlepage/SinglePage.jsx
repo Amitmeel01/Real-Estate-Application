@@ -29,7 +29,7 @@ function SinglePage() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/user/save",
+        `${window.location.origin}/api/user/save`,
         { postId: post.id },
         { withCredentials: true }
       );
@@ -55,7 +55,7 @@ function SinglePage() {
     
     try {
       await axios.put(
-        `http://localhost:8080/api/posts/${post.id}`,
+        `${window.location.origin}/api/posts/${post.id}`,
         { postId: post.id },
         { withCredentials: true }
       );
@@ -81,7 +81,7 @@ function SinglePage() {
     console.log(post.id);
     try {
       await axios.delete(
-        `http://localhost:8080/api/posts/${post.id}`,
+        `${window.location.origin}/api/posts/${post.id}`,
         { withCredentials: true }
       );
       navigate('/list');
